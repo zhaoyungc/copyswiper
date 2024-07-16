@@ -19,15 +19,14 @@ jobs:
       - name: Build
         run: npm run build
  
-      - name: Create ZIP File
-        uses: akhileshns/zip-action@master
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: DEPLOY
+      #     publish_dir: ./dist
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          args: ./dist -r ./projects.zip
-   
-      - name: Upload ZIP File to GitHub Release
-        id: upload_zip
-        uses: akhileshns/upload-to-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TESTSWIPER }}
-        with:
-          file_name: projects.zip
+          github_token: ${{ secrets.TESTSWIPER }}
+          publish_dir: ./dist

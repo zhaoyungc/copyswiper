@@ -18,21 +18,15 @@ jobs:
  
       - name: Build
         run: npm run build
-
-      - name: zip
-        uses: hoatruongdev09/extract-zip@v1.2
-        with:
-          input-path: ./dist
-          output-path: ./projects.zip
+ 
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: DEPLOY
+      #     publish_dir: ./dist
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.TESTSWIPER }}
           publish_dir: ./dist
-
-      - name: Deploy2
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.TESTSWIPER }}
-          publish_dir: ./projects.zip

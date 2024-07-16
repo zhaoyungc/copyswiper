@@ -32,13 +32,13 @@ jobs:
       #     publish_dir: ./dist
 
       - name: Create ZIP File
-        uses: akhileshns/zip-action@master
+        uses: akhileshns/zip-action@v2.0.1
         with:
           args: ./dist -r ./projects.zip
    
       - name: Upload ZIP File to GitHub Release
         id: upload_zip
-        uses: akhileshns/upload-to-release@master
+        uses: akhileshns/upload-to-release@v2.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.TESTSWIPER }}
         with:

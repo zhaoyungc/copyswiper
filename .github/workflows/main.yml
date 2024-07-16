@@ -10,24 +10,24 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
  
-    - name: Install Dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
  
-    - name: Build Vue App
-      run: npm run build
+      - name: Build
+        run: npm run build
  
-    - name: Create ZIP File
-      uses: akhileshns/zip-action@master
-      with:
-        args: ./dist -r ./projects.zip
- 
-    - name: Upload ZIP File to GitHub Release
-      id: upload_zip
-      uses: akhileshns/upload-to-release@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.TESTSWIPER }}
-      with:
-        file_name: projects.zip
+      - name: Create ZIP File
+        uses: akhileshns/zip-action@master
+        with:
+          args: ./dist -r ./projects.zip
+   
+      - name: Upload ZIP File to GitHub Release
+        id: upload_zip
+        uses: akhileshns/upload-to-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TESTSWIPER }}
+        with:
+          file_name: projects.zip
